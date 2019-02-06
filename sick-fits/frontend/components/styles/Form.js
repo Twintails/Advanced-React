@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from "styled-components";
 
 const loading = keyframes`
   from {
@@ -21,8 +21,16 @@ const Form = styled.form`
   line-height: 1.5;
   font-weight: 600;
   label {
-    display: block;
+    display: flex;
     margin-bottom: 1rem;
+    flex-flow: row wrap;
+    align-items: center;
+
+    img {
+      display: inline-block;
+      max-height: 5rem;
+      margin: 0.5rem;
+    }
   }
   input,
   textarea,
@@ -37,7 +45,7 @@ const Form = styled.form`
     }
   }
   button,
-  input[type='submit'] {
+  input[type="submit"] {
     width: auto;
     background: red;
     color: white;
@@ -45,6 +53,9 @@ const Form = styled.form`
     font-size: 2rem;
     font-weight: 600;
     padding: 0.5rem 1.2rem;
+  }
+  input.hidden {
+    display: none;
   }
   fieldset {
     border: 0;
@@ -55,11 +66,16 @@ const Form = styled.form`
     }
     &::before {
       height: 10px;
-      content: '';
+      content: "";
       display: block;
-      background-image: linear-gradient(to right, #ff3019 0%, #e2b04a 50%, #ff3019 100%);
+      background-image: linear-gradient(
+        to right,
+        #ff3019 0%,
+        #e2b04a 50%,
+        #ff3019 100%
+      );
     }
-    &[aria-busy='true']::before {
+    &[aria-busy="true"]::before {
       background-size: 50% auto;
       animation: ${loading} 0.5s linear infinite;
     }

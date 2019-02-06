@@ -1,0 +1,37 @@
+# import * from './generated/prisma.graphql'
+# first create the datamodel in '../datamodel.prisma'
+
+type Mutation {
+  createItem(
+    title: String,
+    description: String,
+    price: Int,
+    image: String,
+    largeImage: String
+  ): Item!
+  updateItem(
+    id: ID!,
+    title: String,
+    description: String,
+    price: Int,
+    image: String,
+    largeImage: String
+  ): Item!
+  deleteItem(
+    id: ID!
+  ): Item
+  signup(
+    email: String!,
+    loginId: String!,
+    password: String!,
+    name: String!
+  ): User!
+  signin(loginId: String!, password: String!): User!
+} # when you create a new mutation; code the new resolver. --> 'resolvers/Mutation.js'
+
+type Query {
+  items(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, first: Int): [Item]!
+  item(where: ItemWhereUniqueInput!): Item
+  itemsConnection(where: ItemWhereInput): ItemConnection!
+  me: User
+}

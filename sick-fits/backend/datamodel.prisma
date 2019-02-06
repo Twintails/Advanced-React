@@ -1,0 +1,37 @@
+# anytime you update this file, deploy to prisma and pull down new prisma.schema
+# npm run deploy
+
+# next update the Schema in 'src/schema.graphql'
+
+enum Permission {
+  ADMIN
+  USER
+  ITEMCREATE
+  ITEMREAD
+  ITEMUPDATE
+  ITEMDELETE
+  PERMISSIONUPDATE
+}
+
+type User {
+  id: ID! @unique
+  name: String!
+  email: String!
+  loginId: String!
+  password: String!
+  resetToken: String
+  resetTokenExpiry: Float
+  permissions: [Permission]
+}
+
+type Item {
+  id: ID! @unique
+  title: String!
+  description: String!
+  image: String
+  largeImage: String
+  price: Int!
+  # createdAt: DateTime!
+  # updatedAt: DateTime!
+  # user: User!
+}
